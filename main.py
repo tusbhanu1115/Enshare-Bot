@@ -16,20 +16,14 @@ dp = Dispatcher(bot)
 dp.middleware.setup(LoggingMiddleware())
 
 
-@dp.message_handler(Command("start"))
+@dp.message_handler(commands=['start'])
 async def handle_start(message: types.Message):
-    await handle_start(bot,message)
+    # Send six messages to the user
+    for i in range(1, 7):
+        await message.answer(f"This is message {i}")
 
-
-@dp.callback_query_handler()
-async def handle_btn_click(call: types.CallbackQuery):
-    await handle_button_click(call)
-
-
-@dp.message_handler(state='*', func=lambda message: message.chat.id in user_state and user_state[message.chat.id] == STATE_WAITING_BATCH_LINKS)
-async def handle_batch(message: types.Message, state: FSMContext):
-    await handle_batch_links(bot,message)
-
+        # Add a small delay between each message (optional)
+        await asyncio.sleep(1)
 
 if __name__ == '__main__':
     from aiogram import executor
