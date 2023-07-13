@@ -17,7 +17,7 @@ dp.middleware.setup(LoggingMiddleware())
 
 
 @dp.message_handler(Command("start"))
-async def handle_start(call):
+async def handle_start(message):
     async def handle_start_wrapper(message):
         await handle_start(bot,message)
 
