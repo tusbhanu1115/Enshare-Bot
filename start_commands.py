@@ -1,19 +1,18 @@
 from utils import *
 from telebot import types
 from collections import deque
+import asyncio
+from aiogram import Bot, Dispatcher, types
 
-def handle_start(message):
-    # Enqueue multiple messages
-    message_queue.extend(["Message 1", "Message 2", "Message 3"])
-    
-    # Start sending messages
-    send_next_message(message.chat.id)
+async def send_multiple_messages(chat_id):
+    messages = ["Message 1", "Message 2", "Message 3"]
 
-def send_next_message(chat_id):
-    if message_queue:
-        # Dequeue and send the next message
-        message = message_queue.popleft()
-        bot.send_message(chat_id, message)
-        
-        # Call the function recursively to send the next message
-        send_next_message(chat_id)
+    for message in messages:
+        await bot.send_message(chat_id, message)
+        await asyncio.sleep(1)  # Add a delay between messages (optional)
+
+async def handle_start(bot,message: types.Message):
+    # Start sending messages asynchronously
+    await send_multiple_messages(message.chat.id)
+
+
