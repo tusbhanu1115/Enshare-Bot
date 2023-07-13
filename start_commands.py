@@ -1,5 +1,6 @@
 from utils import *
 from telebot import types
+from collections import deque
 
 # Define a deque to store the messages
 message_queue = deque()
