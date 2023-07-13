@@ -1,7 +1,7 @@
 from telebot import types
 from utils import *
 
-async def handle_batch_links(bot, message):
+def handle_batch_links(bot,message):
     batch_links = message.text.strip().split('-')
     if len(batch_links) == 2:
         start_link = batch_links[0].strip()
@@ -19,7 +19,7 @@ async def handle_batch_links(bot, message):
 
         keyboard.add(copy)
 
-        await bot.send_message(message.chat.id, batchgen_msg, reply_markup=keyboard, parse_mode='HTML')
+        bot.send_message(message.chat.id, batchgen_msg, reply_markup=keyboard, parse_mode='HTML')
 
         user_state.pop(message.chat.id)
 
@@ -27,4 +27,4 @@ async def handle_batch_links(bot, message):
 
         user_state[message.chat.id] = unique_link
     else:
-        await bot.send_message(message.chat.id, "Invalid input. Please provide both the start and end links separated by '-'.")
+        bot.send_message(message.chat.id, "Invalid input. Please provide both the start and end links separated by '-'.")
