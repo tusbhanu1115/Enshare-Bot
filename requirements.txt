@@ -1,0 +1,6 @@
+pyTelegramBotAPI
+http.server
+pyperclip
+random
+string
+re
