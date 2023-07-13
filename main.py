@@ -17,21 +17,18 @@ dp.middleware.setup(LoggingMiddleware())
 
 
 @dp.message_handler(Command("start"))
-async def handle_start(message):
-    async def handle_start_wrapper(message):
-        await handle_start(bot,message)
+async def handle_start(message: types.Message):
+    await handle_start(bot,message)
 
 
 @dp.callback_query_handler()
 async def handle_btn_click(call: types.CallbackQuery):
-    async handle_btn_click_wrapper(call):
-        await handle_button_click(bot,call)
+    await handle_button_click(call)
 
 
 @dp.message_handler(state='*', func=lambda message: message.chat.id in user_state and user_state[message.chat.id] == STATE_WAITING_BATCH_LINKS)
 async def handle_batch(message: types.Message, state: FSMContext):
-    async handle_batch_wrapper(message, state):
-        await handle_batch_links(bot,message)
+    await handle_batch_links(bot,message)
 
 
 if __name__ == '__main__':
