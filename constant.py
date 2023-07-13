@@ -1,6 +1,9 @@
 # API Token for your Telegram bot
 API_TOKEN = '5854990217:AAHljj4XJGdtUnp8fFdoEXBm9EviDNdH7WM'
 
+WEBHOOK_URL = 'https://drab-ruby-seal-hose.cyclic.app/'  # Replace with your webhook URL
+WEBHOOK_PATH = '/webhook'  # Replace with your desired webhook path
+
 # Channel ID where files will be stored
 CHAT_ID = -1001888504950
 
