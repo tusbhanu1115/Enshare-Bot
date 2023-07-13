@@ -24,9 +24,9 @@ def extract_nums(url):
 
     return num1, num2
 
-def forward_posts(bot,chat_id, start_id, end_id):
+async def forward_posts(bot, chat_id, start_id, end_id):
     for post_id in range(start_id, end_id + 1):
         try:
-            message = bot.copy_message(chat_id, CHAT_ID, post_id)
+            await bot.copy_message(chat_id, CHAT_ID, post_id)
         except telebot.apihelper.ApiTelegramException as e:
             print(f"Error forwarding message: {e}")
