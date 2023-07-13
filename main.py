@@ -13,7 +13,7 @@ dp = Dispatcher(bot, storage=storage)
 
 @dp.message_handler(commands=['start'])
 async def handle_start_wrapper(message: types.Message):
-    await handle_start(message)
+    await handle_start(bot,message)
 
 @dp.callback_query_handler(func=lambda call: True)
 async def handle_btn_click_wrapper(call: types.CallbackQuery):
