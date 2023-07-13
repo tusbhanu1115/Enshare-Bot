@@ -1,7 +1,6 @@
 from utils import *
 from telebot import types
 
-@bot.message_handler(commands=['start'])
 def handle_start(bot,message):
     # Define the number of messages you want to send
     num_messages = 5
