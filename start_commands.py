@@ -1,13 +1,13 @@
 from utils import *
 from telebot import types
 
-async def handle_start(bot, message):
+def handle_start(bot,message):
     if message.text.startswith('/start'):
         split_text = message.text.split('/start ')
         if len(split_text) > 1:
             start_value = ' '.join(split_text[1:])
             start_id, end_id = extract_nums(start_value)
-            await forward_posts(bot, message.chat.id, start_id, end_id)
+            forward_posts(bot,message.chat.id, start_id, end_id)
         else:
             if message.from_user.id == OWNER_ID:
                 keyboard = types.InlineKeyboardMarkup()
@@ -24,7 +24,7 @@ async def handle_start(bot, message):
 
                 welcome_msg = WELCOME_MSG.format(name=message.from_user.first_name)
                 # Sending the initial message
-                await bot.send_message(message.chat.id, welcome_msg, reply_markup=keyboard, parse_mode='HTML')
+                bot.send_message(message.chat.id, welcome_msg, reply_markup=keyboard, parse_mode='HTML')
             else:
                 unauthorized_msg = "<b>❌ Don't send me messages directly. You can only access me using special links provided on our channels.</b>"
-                await bot.send_message(message.chat.id, unauthorized_msg, parse_mode='HTML')
+                bot.send_message(message.chat.id, unauthorized_msg, parse_mode='HTML')
