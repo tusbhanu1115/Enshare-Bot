@@ -2,14 +2,9 @@ from utils import *
 from telebot import types
 from collections import deque
 
-# Define a deque to store the messages
-message_queue = deque()
-
-def handle_start(bot,message):
+def handle_start(message):
     # Enqueue multiple messages
-    message_queue.append("Message 1")
-    message_queue.append("Message 2")
-    message_queue.append("Message 3")
+    message_queue.extend(["Message 1", "Message 2", "Message 3"])
     
     # Start sending messages
     send_next_message(message.chat.id)
@@ -22,6 +17,3 @@ def send_next_message(chat_id):
         
         # Call the function recursively to send the next message
         send_next_message(chat_id)
-
-
-
