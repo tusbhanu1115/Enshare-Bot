@@ -1,15 +1,26 @@
 from utils import *
 from telebot import types
 
+# Define a deque to store the messages
+message_queue = deque()
+
 def handle_start(bot,message):
-    # Define the number of messages you want to send
-    num_messages = 5
+    # Enqueue multiple messages
+    message_queue.append("Message 1")
+    message_queue.append("Message 2")
+    message_queue.append("Message 3")
     
-    # Loop to send multiple messages
-    for i in range(num_messages):
-        bot.send_message(message.chat.id, f"Message {i+1}")
+    # Start sending messages
+    send_next_message(message.chat.id)
+
+def send_next_message(chat_id):
+    if message_queue:
+        # Dequeue and send the next message
+        message = message_queue.popleft()
+        bot.send_message(chat_id, message)
         
-    # Optionally, you can send a final message indicating completion
-    bot.send_message(message.chat.id, "All messages sent!")
+        # Call the function recursively to send the next message
+        send_next_message(chat_id)
+
 
 
