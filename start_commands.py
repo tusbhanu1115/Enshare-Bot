@@ -30,14 +30,16 @@ def handle_start(bot,message):
                 bot.send_message(message.chat.id, unauthorized_msg, parse_mode='HTML')
 
 def forward_posts(bot, chat_id, start_id, end_id):
-    message_ids = []
+    messages = []
     for post_id in range(start_id, end_id + 1):
         try:
-            message = bot.forward_message(chat_id, CHAT_ID, post_id)
-            message_ids.append(message.message_id)
+            message = bot.send_message(chat_id, f"https://t.me/{CHAT_ID}/{post_id}")
+            messages.append(message)
         except telebot.apihelper.ApiTelegramException as e:
             print(f"Error forwarding message: {e}")
     
     # Sending a single message that includes all the forwarded posts
-    if message_ids:
-        bot.copy_message(chat_id, "\n".join([f"https://t.me/{CHAT_ID}/{message_id}" for message_id in message_ids]))
+    if messages:
+        forwarded_posts = "\n".join([f"https://t.me/{CHAT_ID}/{message.message_id}" for message in messages])
+        bot.send_message(chat_id, f"Here are the posts you requested:\n{forwarded_posts}")
+
