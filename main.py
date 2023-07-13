@@ -20,6 +20,4 @@ def handle_btn_click_wrapper(call):
 def handle_batch_wrapper(message):
     handle_batch_links(bot,message)
 
-if __name__ == '__main__':
-    bot.remove_webhook()
-    bot.polling()
+bot.polling()
