@@ -21,7 +21,7 @@ async def handle_btn_click_wrapper(call: types.CallbackQuery):
 
 @dp.message_handler(func=lambda message: message.chat.id in user_state and user_state[message.chat.id] == STATE_WAITING_BATCH_LINKS)
 async def handle_batch_wrapper(message: types.Message):
-    await handle_batch_links(message)
+    await handle_batch_links(bot,message)
 
 class WebhookHandler(BaseHTTPRequestHandler):
     def _set_response(self):
