@@ -1,6 +1,2 @@
 pyTelegramBotAPI
-pyperclip
-random
-string
-re
 http.server
