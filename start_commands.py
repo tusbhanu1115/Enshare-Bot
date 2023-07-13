@@ -27,7 +27,7 @@ def handle_start(bot,message):
                 bot.send_message(message.chat.id, welcome_msg, reply_markup=keyboard, parse_mode='HTML')
             else:
                 unauthorized_msg = "<b>❌ Don't send me messages directly. You can only access me using special links provided on our channels.</b>"
-                bot.send_message(message.chat.id, unauthorized_msg, parse_mode='HTML')
+                bot.copy_message(message.chat.id, unauthorized_msg, parse_mode='HTML')
 
 def forward_posts(bot, chat_id, start_id, end_id):
     message_ids = []
