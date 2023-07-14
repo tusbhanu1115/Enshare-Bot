@@ -1,8 +1,15 @@
 import random
 import re
 import string
-import telebot
+from pyrogram import Client
 from constant import *
+
+bot = Client(
+    "my_bot",
+    api_id=API_ID,
+    api_hash=API_HASH,
+    bot_token=API_TOKEN
+)
 
 def generate_random_value(length):
     # Generate a random value of the specified length
@@ -24,9 +31,9 @@ def extract_nums(url):
 
     return num1, num2
 
-def forward_posts(bot,chat_id, start_id, end_id):
+def forward_posts(client, chat_id, start_id, end_id):
     for post_id in range(start_id, end_id + 1):
         try:
-            message = bot.copy_message(chat_id, CHAT_ID, post_id)
-        except telebot.apihelper.ApiTelegramException as e:
+            message = client.forward_messages(chat_id, CHAT_ID, post_id)
+        except Exception as e:
             print(f"Error forwarding message: {e}")
