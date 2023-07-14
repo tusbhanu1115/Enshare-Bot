@@ -30,7 +30,7 @@ class WebhookHandler(BaseHTTPRequestHandler):
         content_length = int(self.headers['Content-Length'])
         update_data = self.rfile.read(content_length)
         update = telebot.types.Update.de_json(update_data.decode('utf-8'))
-        bot.process_new_updates([update])
+        asyncio.run(bot.process_new_updates([update]))  # Use asyncio.run to await the coroutine
         self._set_response()
 
 def run_server():
