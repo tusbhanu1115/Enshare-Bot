@@ -32,5 +32,5 @@ async def handle_start(bot, message):
 async def handle_start_wrapper(bot, message):
     await handle_start(bot, message)
 
-    # Add this line to return the awaited coroutine
-    return handle_start(bot, message)
+# Remove the unnecessary return statement
+
