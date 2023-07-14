@@ -37,3 +37,13 @@ class WebhookHandler(BaseHTTPRequestHandler):
     async def process_update(self, bot, update):
         await bot.process_new_updates([update])
 
+def run_server():
+    server_address = ('', 3000)  # Update port number if needed
+    httpd = HTTPServer(server_address, WebhookHandler)
+    httpd.serve_forever()
+
+if __name__ == '__main__':
+    bot.remove_webhook()
+    bot.set_webhook(url=WEBHOOK_URL)
+
+    run_server()
