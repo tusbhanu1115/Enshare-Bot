@@ -1,3 +1,2 @@
 pyTelegramBotAPI
 pyperclip
-asyncio
