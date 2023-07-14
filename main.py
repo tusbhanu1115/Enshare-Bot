@@ -5,6 +5,7 @@ from utils import *
 from btns import *
 from msgs import *
 from http.server import BaseHTTPRequestHandler, HTTPServer
+import asyncio
 
 bot = telebot.TeleBot(API_TOKEN)
 
