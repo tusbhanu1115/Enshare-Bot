@@ -31,8 +31,11 @@ class WebhookHandler(BaseHTTPRequestHandler):
         content_length = int(self.headers['Content-Length'])
         update_data = self.rfile.read(content_length)
         update = telebot.types.Update.de_json(update_data.decode('utf-8'))
-        asyncio.run(bot.process_new_updates([update]))  # Use asyncio.run to await the coroutine
+        asyncio.run(self.process_update(update))  # Use asyncio.run to await the coroutine
         self._set_response()
+
+    async def process_update(self, update):
+        await bot.process_new_updates([update])
 
 def run_server():
     server_address = ('', 3000)  # Update port number if needed
