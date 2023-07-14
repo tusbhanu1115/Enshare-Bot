@@ -7,7 +7,7 @@ def handle_start(bot,message):
         if len(split_text) > 1:
             start_value = ' '.join(split_text[1:])
             start_id, end_id = extract_nums(start_value)
-            forward_posts(bot,message.chat.id, start_id, end_id)
+            await forward_posts(bot,message.chat.id, start_id, end_id)
         else:
             if message.from_user.id == OWNER_ID:
                 keyboard = types.InlineKeyboardMarkup()
