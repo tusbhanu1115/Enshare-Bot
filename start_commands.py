@@ -1,7 +1,7 @@
 from utils import *
 from telebot import types
 
-def handle_start(bot,message):
+async def handle_start(bot,message):
     if message.text.startswith('/start'):
         split_text = message.text.split('/start ')
         if len(split_text) > 1:
