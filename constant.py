@@ -1,5 +1,6 @@
-# API Token for your Telegram bot
-API_TOKEN = '5854990217:AAHljj4XJGdtUnp8fFdoEXBm9EviDNdH7WM'
+BOT_TOKEN = '5854990217:AAHljj4XJGdtUnp8fFdoEXBm9EviDNdH7WM'
+API_ID = '19882437'
+API_HASH = '7969640fc7a8a1783e6e4c41ceb7f697'
 
 WEBHOOK_URL = 'https://enchanting-scarf-bass.cyclic.app/'  # Replace with your webhook URL
 WEBHOOK_PATH = '/webhook'  # Replace with your desired webhook path
