@@ -1,5 +1,6 @@
 from utils import *
 from telebot import types
+import asyncio
 
 async def handle_start(bot, message):
     if message.text.startswith('/start'):
