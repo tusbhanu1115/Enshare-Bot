@@ -9,8 +9,8 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 bot = telebot.TeleBot(API_TOKEN)
 
 @bot.message_handler(commands=['start'])
-def handle_start_wrapper(message):
-    handle_start(bot, message)
+async def handle_start_wrapper(message):
+    await handle_start(bot, message)
 
 @bot.callback_query_handler(func=lambda call: True)
 def handle_btn_click_wrapper(call):
